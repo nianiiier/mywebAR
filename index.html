@@ -3,20 +3,56 @@
 
 <head>
     <meta charset="utf-8">
-    <script
-        src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
-    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1.6.0/dist/aframe-master.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <style>
+        .arjs-loader {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .arjs-loader div {
+            text-align: center;
+            font-size: 1.25em;
+            color: white;
+        }
+    </style>
 </head>
 
-<body style="margin: 0; overflow: hidden;">
-    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-        <!-- 使用标准marker而非marker-camera -->
-        <a-marker preset="hiro">
-            <!-- 为文本添加位置偏移，使其显示在标记上方 -->
-            <a-text value="Bilibili" color="pink" position="0 0.5 0" rotation="-90 0 0" align="center" scale="2 2 2"></a-text>
+<body style="margin: 0px; overflow: hidden;">
+    <!-- 加载指示器 -->
+    <div class="arjs-loader">
+        <div>正在加载，请稍候...</div>
+    </div>
+
+    <a-scene 
+        vr-mode-ui="enabled: false;"
+        renderer="logarithmicDepthBuffer: true; precision: medium;"
+        embedded
+        arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
+        
+        <!-- 使用marker替代NFT -->
+        <a-marker preset="hiro" smooth="true" smoothCount="10" smoothTolerance=".01" smoothThreshold="5">
+            <!-- 将文本放置在marker上方 -->
+            <a-text 
+                value="Bilibili" 
+                color="pink" 
+                position="0 0.5 0"
+                rotation="-90 0 0"
+                align="center"
+                scale="2 2 2">
+            </a-text>
         </a-marker>
         
-        <!-- 单独定义相机 -->
+        <!-- 单独的相机实体 -->
         <a-entity camera></a-entity>
     </a-scene>
 </body>
