@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>text</title>
-</head>
-
 <html>
 
+<head>
+    <meta charset="utf-8">
+    <script
+        src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
+    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+</head>
+
 <body>
-    hello world
+    <a-scene arjs embedded>
+        <!-- 文字 -->
+        <a-text value="Bilibili" color="pink" rotation="-90 0 0"></a-text>
+
+        <!-- 图片 -->
+        <!-- <a-image src="../assets/images/arknights.png" rotation="-90 0 0"></a-image> -->
 </body>
+
 </html>
